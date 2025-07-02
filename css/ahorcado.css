@@ -336,6 +336,36 @@ p {
     to { opacity: 1; transform: translateY(0); }
 }
 
+.tapada {
+    display: inline-block;
+    background: #222;
+    color: #222;
+    border-radius: 8px;
+    padding: 0 18px;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    transition: all 0.7s cubic-bezier(.68,-0.55,.27,1.55);
+    position: relative;
+    cursor: pointer;
+}
+
+.tapada.destapada {
+    color: #fff;
+    background: #27ae60;
+    transform: translateY(-60px) scale(1.2) rotate(-8deg);
+    box-shadow: 0 8px 32px rgba(39,174,96,0.25);
+    z-index: 10;
+    animation: destapar-palabra 1.2s cubic-bezier(.68,-0.55,.27,1.55);
+}
+
+@keyframes destapar-palabra {
+    0% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+    60% { opacity: 1; transform: translateY(-40px) scale(1.15) rotate(-6deg); }
+    80% { opacity: 1; transform: translateY(-60px) scale(1.2) rotate(-8deg); }
+    100% { opacity: 1; }
+}
+
 @media (max-width: 576px) {
     .ahorcado-container {
         padding: 10px 2px;
@@ -356,4 +386,4 @@ p {
     .modal-dialog {
         max-width: 98vw;
     }
-} 
+}

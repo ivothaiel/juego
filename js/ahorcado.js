@@ -3,16 +3,10 @@ class AhorcadoService {
     constructor() {
         // Palabras con sus pistas (definiciones exactas de psicología)
         this.palabras = [
-            { palabra: 'depresion', pista: 'Trastorno mental caracterizado por un estado de ánimo bajo, pérdida de interés o placer, y una disminución de la energía.' },
-            { palabra: 'ansiedad', pista: 'Estado emocional de inquietud, nerviosismo y preocupación excesiva ante situaciones percibidas como amenazantes.' },
-            { palabra: 'resiliencia', pista: 'Capacidad de una persona para superar circunstancias traumáticas o adversas.' },
-            { palabra: 'psicoterapia', pista: 'Tratamiento de problemas emocionales y de conducta mediante técnicas psicológicas.' },
-            { palabra: 'autoconcepto', pista: 'Conjunto de percepciones y creencias que una persona tiene sobre sí misma.' },
-            { palabra: 'motivacion', pista: 'Proceso que inicia, guía y mantiene el comportamiento orientado a un objetivo.' },
-            { palabra: 'cognicion', pista: 'Conjunto de procesos mentales relacionados con el conocimiento, como la percepción, la memoria y el razonamiento.' },
-            { palabra: 'trauma', pista: 'Respuesta emocional a un evento profundamente perturbador o angustiante.' },
-            { palabra: 'empatía', pista: 'Capacidad de comprender y compartir los sentimientos de otra persona.' },
-            { palabra: 'autoestima', pista: 'Valoración positiva o negativa que una persona tiene de sí misma.' }
+            { 
+                palabra: 'depresion', 
+                pista: 'La terapia grupal psicoanalítica puede ser un enfoque efectivo para abordar los conflictos neuróticos y promover la creatividad y la integración social en pacientes de edad avanzada que experimentan <span id="palabra-tapada" class="tapada">_________</span>.' 
+            }
         ];
 
         this.palabraSecreta = '';
@@ -295,6 +289,17 @@ class AhorcadoGame {
         this.modalBackdropElement.classList.add('show');
         this.resultadoModalElement.querySelector('.modal-content').classList.remove('victoria', 'derrota');
         this.resultadoModalElement.querySelector('.modal-content').classList.add(victoria ? 'victoria' : 'derrota');
+        // Animación de destapar palabra si victoria
+        if (victoria) {
+            const tapada = document.getElementById('palabra-tapada');
+            if (tapada) {
+                tapada.classList.add('destapada');
+                setTimeout(() => {
+                    tapada.textContent = 'DEPRESIÓN';
+                    tapada.style.color = '#fff';
+                }, 700);
+            }
+        }
     }
 
     ocultarModal() {
@@ -369,4 +374,4 @@ class AhorcadoGame {
 document.addEventListener('DOMContentLoaded', () => {
     actualizarContadores();
     new AhorcadoGame();
-}); 
+});

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego del Ahorcado</title>
+    <link rel="stylesheet" href="./ahorcado/ahorcado.css">
+</head>
+<body>
+    <div class="ahorcado-container">
+        <h2>Juego del Ahorcado</h2>
+        <div class="contador-bar">
+            <span class="contador-victorias">Victorias: <span id="contadorVictorias">0</span></span>
+            <span class="contador-derrotas">Derrotas: <span id="contadorDerrotas">0</span></span>
+        </div>
+        <details class="instrucciones"><summary><strong>¿Cómo se juega?</strong></summary>
+            <ul>
+                <li>Adivina la palabra letra por letra antes de que se complete el ahorcado.</li>
+                <li>Puedes usar el teclado físico o el teclado virtual.</li>
+                <li>¡Cuidado! Cada error suma una parte al ahorcado.</li>
+                <li>Puedes pedir la pista, pero perderás un intento.</li>
+            </ul>
+        </details>
+        <p><strong>Pista:</strong> <span id="pista"></span> <button class="btn-pista" id="verPistaBtn" title="Ver pista (pierdes un intento)">Ver pista</button></p>
+        <p><strong>Palabra:</strong> <span id="estadoPalabra"></span></p>
+        <p><strong>Intentos restantes:</strong> <span id="intentosRestantes">9</span></p>
+        
+        <img id="imagenAhorcado" class="imagen-ahorcado" alt="Estado del ahorcado">
+        
+        <div id="tecladoVirtual" class="teclado-virtual"></div>
+        <div id="inputFeedback" class="input-feedback"></div>
+        <div class="letras-usadas"><strong>Letras usadas:</strong> <span id="letrasUsadas"></span></div>
+        
+        <button class="btn-reiniciar" id="reiniciarBtn">Reiniciar Juego</button>
+
+        <!-- Modal para victoria/derrota -->
+        <div class="modal" id="resultadoModal" tabindex="-1" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modalTitle"></h5>
+                    </div>
+                    <div class="modal-body">
+                        <div class="modal-icon" id="modalIcon"></div>
+                        <p id="modalMensaje"></p>
+                        <div id="modalPalabraRevelada"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn-modal" id="jugarNuevoBtn">Jugar de nuevo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal-backdrop" id="modalBackdrop"></div>
+    </div>
+    <script src="./js/ahorcado.js"></script>
+</body>
+</html> 
